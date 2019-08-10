@@ -25,7 +25,7 @@ export class GuardGuard implements CanActivate  {
   // }
 
   restricted_Url_If_Logined = [
-    '',
+    'login',
     'register',
     // 'forget-password',
     // 'verify-forget-password',

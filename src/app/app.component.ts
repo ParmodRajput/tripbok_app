@@ -17,8 +17,23 @@ export class AppComponent {
       icon: 'home'
     },
     {
-      title: 'List',
-      url: '/list',
+      title: 'Your Trips',
+      url: 'list',
+      icon: 'list'
+    },
+    {
+      title: 'Patments',
+      url: '/patments',
+      icon: 'list'
+    },
+    {
+      title: 'Free Rides',
+      url: '/free-rides',
+      icon: 'list'
+    },
+    {
+      title: 'Settings',
+      url: '/settings',
       icon: 'list'
     }
   ];
