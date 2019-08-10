@@ -26,10 +26,10 @@ export class LoginPage implements OnInit {
       this.AuthService.login(this.data)
       .subscribe(res => {
         // console.log(res.authenticated);
-         if(res.authenticated){
-           localStorage.setItem('token','Bearer '+res.data.token);
-           localStorage.setItem('id',res.data.id);
-           localStorage.setItem('authenticated',res.authenticated);
+         if(res['authenticated']){
+           localStorage.setItem('token','Bearer '+res['data'].token);
+           localStorage.setItem('id',res['data'].id);
+           localStorage.setItem('authenticated',res['authenticated']);
            this.router.navigate(['home']);
          }
         }, error => {
