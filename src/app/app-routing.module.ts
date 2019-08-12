@@ -11,7 +11,7 @@ const routes: Routes = [
   {path: 'home',loadChildren: './home/home.module#HomePageModule',canActivate: [GuardGuard]
     // loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
   },
-  { path: 'list',loadChildren: './list/list.module#ListPageModule',canActivate: [GuardGuard]
+  { path: 'trips-list',loadChildren: './list/list.module#ListPageModule',canActivate: [GuardGuard]
    // loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
   },
   { path: 'register', loadChildren: './register/register.module#RegisterPageModule',canActivate: [GuardGuard] }

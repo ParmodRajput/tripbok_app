@@ -18,7 +18,7 @@ export class AppComponent {
     },
     {
       title: 'Your Trips',
-      url: 'list',
+      url: 'trips-list',
       icon: 'list'
     },
     {

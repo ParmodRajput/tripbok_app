@@ -10,26 +10,27 @@
 </ion-header>
 
 <ion-content>
-  <!-- <ion-list>
-    <ion-item *ngFor="let item of items">
-      <ion-icon [name]="item.icon" slot="start"></ion-icon>
-      {{item.title}}
-      <div class="item-note" slot="end">
-        {{item.note}}
-      </div>
-    </ion-item>
-  </ion-list> -->
+  <ion-segment>
+      <ion-segment-button (ionSelect)="TripsList(type ='all')" checked>
+          <ion-label>All</ion-label>
+        </ion-segment-button>
+      <ion-segment-button (ionSelect)="TripsList(type ='past')">
+        <ion-label>Past</ion-label>
+      </ion-segment-button>
+      <ion-segment-button (ionSelect)="TripsList(type ='upcoming')">
+        <ion-label>Upcoming</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+      <ion-card *ngFor="let trip of trips">
+        <ion-card-content (click)="TripsDetail(trip.trip_id)">
+            <img src='http://localhost/tripbok/storage/app/public/media/trip/32/route.png'/>
+            {{trip.to}} to {{trip.from}}
+        </ion-card-content>
+      </ion-card>
+  </ion-content>
   <!--
     <div *ngIf="selectedItem" padding>
       You navigated here from <b>{{selectedItem.title }}</b>
     </div>
   -->
-  <ion-segment>
-    <ion-segment-button (ionSelect)="TripsList(type ='past')">
-      <ion-label>Past</ion-label>
-    </ion-segment-button>
-    <ion-segment-button (ionSelect)="TripsList(type ='upcoming')">
-      <ion-label>Upcoming</ion-label>
-    </ion-segment-button>
-  </ion-segment>
-</ion-content>
+

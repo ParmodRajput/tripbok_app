@@ -20,8 +20,23 @@ export class ListPage implements OnInit {
     'bluetooth',
     'build'
   ];
+  public trips: any;
   public items: Array<{ title: string; note: string; icon: string }> = [];
   constructor(private AuthService: AuthService, private router: Router) {
+    this.data ={
+      type:'all',
+      user_id:localStorage.getItem('id'),
+      token:localStorage.getItem('token'),
+    }
+    this.AuthService.TripsList(this.data)
+    .subscribe(res => {
+       this.trips =res['data'];
+      }, error => {
+        localStorage.clear();
+        this.router.navigate(['login']);
+        console.log('kk');
+        console.log(error);
+      });
     // for (let i = 1; i < 11; i++) {
     //   this.items.push({
     //     title: 'Item ' + i,
@@ -37,26 +52,38 @@ export class ListPage implements OnInit {
   // navigate(item) {
   //   this.router.navigate(['/list', JSON.stringify(item)]);
   // }
-  TripsList(type ='upcoming'){
+  TripsList(type ='all'){
     this.data ={
       type:type,
       user_id:localStorage.getItem('id'),
       token:localStorage.getItem('token'),
-      Authorization:localStorage.getItem('token')
-
     }
     this.AuthService.TripsList(this.data)
     .subscribe(res => {
-      // console.log(res.authenticated);
-        // if(res['authenticated']){
-        //   localStorage.setItem('token','Bearer '+res['data'].token);
-        //   localStorage.setItem('id',res['data'].id);
-        //   localStorage.setItem('authenticated',res['authenticated']);
-        //   this.router.navigate(['home']);
-        // }
+       this.trips =res['data'];
       }, error => {
+       // localStorage.clear();
+        //this.router.navigate(['login']);
         console.log('kk');
         console.log(error);
       });
   }
+  TripsDetail(id){
+    alert(id);
+    this.data ={
+      id:id,
+      user_id:localStorage.getItem('id'),
+      token:localStorage.getItem('token'),
+    }
+    this.AuthService.TripsDetail(this.data)
+    .subscribe(res => {
+       this.trips =res['data'];
+      }, error => {
+       // localStorage.clear();
+        //this.router.navigate(['login']);
+        console.log('kk');
+        console.log(error);
+      });
+  }
+  
 }
