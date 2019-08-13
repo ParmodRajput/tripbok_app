@@ -18,7 +18,19 @@ export class TripDetailPage implements OnInit {
     this.AuthService.TripsDetail(data)
     .subscribe(res => {
       console.log(res['data'].to);
+      let rate = res['data'].driver_rating;
+      let ratecom  ='';
+      for(let i=0; i<5; i++){   
+        if(i<=rate){
+          ratecom +='<span class="checked" style="color:orange;">☆</span>';
+        }else{
+          ratecom +='<span class="">☆</span>';
+        }
+      }
+      console.log(ratecom);
+      res['data']['driver_rating'] = ratecom;
       this.trips_detail =res['data'];
+
       }, error => {
        // localStorage.clear();
         //this.router.navigate(['login']);
