@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Detail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card-content>
+    <ion-card-header>
+        <img src='http://localhost/tripbok/storage/app/public/media/trip/32/route.png'/>
+    </ion-card-header>
+    <ion-card-subtitle>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <div class="ion-text-start">
+                  <div>{{trips_detail?.start_time}}</div>
+                  <div> {{trips_detail?.vehicle_name + '  '+ trips_detail?.vehicle_type}}</div>
+              </div>
+            </ion-col>
+            <ion-col>
+              <div class="ion-text-end">
+                 ${{trips_detail?.fare}}
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+    </ion-card-subtitle>
+    <ul style="list-style-type:circle; font-size:15px;">
+      <li>{{trips_detail?.full_to}}</li>
+    </ul>
+    <ul style="list-style-type:square; font-size:15px;">
+      <li>{{trips_detail?.full_from}}</li>
+    </ul>
+    <div style="border:1px solid #c5c5c5;">
+      <ion-grid>
+          <ion-row>
+            <ion-col>
+              <div class="ion-text-start">
+                <ion-avatar>
+                  <ion-img src="http://localhost/tripbok/storage/app/public/media/user.jpg"></ion-img>
+                </ion-avatar>
+              </div>
+            </ion-col>
+            <ion-col>
+              <div class="ion-text-start">
+                {{trips_detail?.driver_name}}
+              </div>
+            </ion-col>
+            <ion-col>
+                <div class="ion-text-start">
+                
+                </div>
+              </ion-col>
+            <ion-col>
+              <div class="ion-text-end">
+                  ${{trips_detail?.fare}}
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      
+    </div>
+  </ion-card-content>
+</ion-content>

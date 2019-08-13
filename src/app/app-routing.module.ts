@@ -14,7 +14,9 @@ const routes: Routes = [
   { path: 'trips-list',loadChildren: './list/list.module#ListPageModule',canActivate: [GuardGuard]
    // loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
   },
-  { path: 'register', loadChildren: './register/register.module#RegisterPageModule',canActivate: [GuardGuard] }
+  { path: 'register', loadChildren: './register/register.module#RegisterPageModule',canActivate: [GuardGuard] },
+  { path: 'trip-detail/:tripid', loadChildren: './trip-detail/trip-detail.module#TripDetailPageModule',canActivate: [GuardGuard] }
+
 ];
 
 @NgModule({

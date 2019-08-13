@@ -67,23 +67,5 @@ export class ListPage implements OnInit {
         console.log('kk');
         console.log(error);
       });
-  }
-  TripsDetail(id){
-    alert(id);
-    this.data ={
-      id:id,
-      user_id:localStorage.getItem('id'),
-      token:localStorage.getItem('token'),
-    }
-    this.AuthService.TripsDetail(this.data)
-    .subscribe(res => {
-       this.trips =res['data'];
-      }, error => {
-       // localStorage.clear();
-        //this.router.navigate(['login']);
-        console.log('kk');
-        console.log(error);
-      });
-  }
-  
+  } 
 }
