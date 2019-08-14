@@ -22,12 +22,10 @@
       </ion-segment-button>
     </ion-segment>
       <ion-card *ngFor="let trip of trips">
-        <a href="trip-detail/{{trip.trip_id}}">
-          <ion-card-content >
-              <img src='http://localhost/tripbok/storage/app/public/media/trip/32/route.png'/>
-              {{trip.to}} to {{trip.from}}
-          </ion-card-content>
-        </a>
+        <ion-card-content  routerLink="/trip-detail/{{trip.trip_id}}" routerDirection="forward">
+          <img src='http://localhost/tripbok/storage/app/public/media/trip/32/route.png'/>
+          {{trip.to}} to {{trip.from}}
+        </ion-card-content>
       </ion-card>
   </ion-content>
   <!--

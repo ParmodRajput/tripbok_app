@@ -15,7 +15,9 @@ const routes: Routes = [
    // loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
   },
   { path: 'register', loadChildren: './register/register.module#RegisterPageModule',canActivate: [GuardGuard] },
-  { path: 'trip-detail/:tripid', loadChildren: './trip-detail/trip-detail.module#TripDetailPageModule',canActivate: [GuardGuard] }
+  { path: 'trip-detail/:tripid', loadChildren: './trip-detail/trip-detail.module#TripDetailPageModule',canActivate: [GuardGuard] },
+  { path: 'driver-detail/:driverid', loadChildren: './driver-detail/driver-detail.module#DriverDetailPageModule',canActivate: [GuardGuard] }
+
 
 ];
 

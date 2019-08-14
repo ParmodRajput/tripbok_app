@@ -1,5 +1,8 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
     <ion-title>Detail</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -34,7 +37,7 @@
     </ul>
     <div style="border:1px solid #c5c5c5;">
       <ion-grid>
-          <ion-row>
+          <ion-row routerLink="/driver-detail/{{trips_detail?.driver_id}}" routerDirection="forward">
             <ion-col>
               <div class="ion-text-start">
                 <ion-avatar>
@@ -44,22 +47,30 @@
             </ion-col>
             <ion-col>
               <div class="ion-text-start">
-                {{trips_detail?.driver_name}}
+                You rated {{trips_detail?.driver_name}}
               </div>
             </ion-col>
             <ion-col>
-                <div class="ion-text-start" [innerHTML]="trips_detail?.driver_rating">
-                    {{trips_detail?.driver_rating}}
-                </div>
-              </ion-col>
-            <ion-col>
-              <div class="ion-text-end">
-                  ${{trips_detail?.fare}}
+              <div class="ion-text-start" [innerHTML]="trips_detail?.driver_rating">
+                {{trips_detail?.driver_rating}}
               </div>
             </ion-col>
           </ion-row>
         </ion-grid>
-      
     </div>
+    <div class="ion-text-start">
+      <br>
+      Need help with this trip?
+    </div>
+    <ion-slides>
+      <ion-slide *ngFor="let trip of policies">
+        <ion-card-content>
+          <img src="{{trip.src}}" alt="">
+        </ion-card-content>
+      </ion-slide>
+    </ion-slides>
+    <ion-menu-toggle>
+        <ion-button>Toggle Menu</ion-button>
+      </ion-menu-toggle>
   </ion-card-content>
 </ion-content>

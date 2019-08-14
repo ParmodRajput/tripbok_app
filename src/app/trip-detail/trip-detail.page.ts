@@ -8,6 +8,13 @@ import { Router,ActivatedRoute } from '@angular/router';
 })
 export class TripDetailPage implements OnInit {
   public trips_detail: any;
+  policies= [
+    {id: 0, src: "http://localhost/tripbok/storage/app/public/media/help.png"},
+    {id: 2, src: "http://localhost/tripbok/storage/app/public/media/help.png"},
+    {id: 3, src: "http://localhost/tripbok/storage/app/public/media/help.png"},
+    {id: 4, src: "http://localhost/tripbok/storage/app/public/media/help.png"},
+    {id: 5, src: "http://localhost/tripbok/storage/app/public/media/help.png"}, 
+  ];
   constructor(private AuthService: AuthService, private router: Router,private route: ActivatedRoute) { 
     console.log(this.route.snapshot.paramMap.get('tripid'))
    let data ={
@@ -20,9 +27,9 @@ export class TripDetailPage implements OnInit {
       console.log(res['data'].to);
       let rate = res['data'].driver_rating;
       let ratecom  ='';
-      for(let i=0; i<5; i++){   
+      for(let i=1; i<=5; i++){   
         if(i<=rate){
-          ratecom +='<span class="checked" style="color:orange;">☆</span>';
+          ratecom +='<span class="checked">☆</span>';
         }else{
           ratecom +='<span class="">☆</span>';
         }
