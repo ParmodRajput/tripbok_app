@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { GuardGuard } from  './guards/guard.guard';
 import { IonicRatingModule } from 'ionic-rating';
+import {MatTabsModule} from '@angular/material';
 // import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
@@ -19,7 +20,8 @@ import { IonicRatingModule } from 'ionic-rating';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTabsModule
   ],
   providers: [
     StatusBar,

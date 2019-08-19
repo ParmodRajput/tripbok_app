@@ -1,7 +1,7 @@
-<ion-content color="primary" padding>
+<ion-content color="light" padding>
     <form #form="ngForm" (ngSubmit)="register(form)">
       <ion-grid>
-      <ion-row color="primary" justify-content-center>
+      <ion-row color="light" justify-content-center>
         <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
         <div text-center>
           <h3>Login</h3>
@@ -10,21 +10,29 @@
             <ion-item>
                 <ion-input name="name" type="name" placeholder="Name" ngModel required></ion-input>
             </ion-item>
+		</div>
+        <div padding>
           <ion-item>
               <ion-input name="phone" type="email" placeholder="Phone number" ngModel required></ion-input>
           </ion-item>
+		</div>
+        <div padding>
           <ion-item>
             <ion-input name="email" type="email" placeholder="your@email.com" ngModel required></ion-input>
           </ion-item>
+		</div>
+        <div padding>
           <ion-item>
             <ion-input name="password" type="password" placeholder="Password" ngModel required></ion-input>
           </ion-item>
+		</div>
+        <div padding>
           <ion-item>
             <ion-input name="c_password" type="password" placeholder="Confgorm Password" ngModel required></ion-input>
           </ion-item>
         </div>
         <div padding>
-          <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Restoration</ion-button>
+          <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Registeration</ion-button>
           <a href=" " secondary clear item-right>
           Login
           </a>

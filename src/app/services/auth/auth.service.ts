@@ -56,5 +56,19 @@ export class AuthService {
     const requestOptions = { headers: headers }; 
      return this.http.post('http://localhost/tripbok/api/trips-detail',formdata,requestOptions)
   }
+  DriverDetail(data) {
+    // console.log(data.token);
+    let headers = new HttpHeaders({
+        'Accept':'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': data.token
+    });
+    let formdata ={
+      id:data.id,
+      user_id:data.user_id
+    }
+    const requestOptions = { headers: headers }; 
+     return this.http.post('http://localhost/tripbok/api/driver-detail',formdata,requestOptions)
+  }
 
 }

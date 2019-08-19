@@ -15,8 +15,7 @@ export class TripDetailPage implements OnInit {
     {id: 4, src: "http://localhost/tripbok/storage/app/public/media/help.png"},
     {id: 5, src: "http://localhost/tripbok/storage/app/public/media/help.png"}, 
   ];
-  constructor(private AuthService: AuthService, private router: Router,private route: ActivatedRoute) { 
-    console.log(this.route.snapshot.paramMap.get('tripid'))
+  constructor(private AuthService: AuthService, private router: Router,private route: ActivatedRoute) {
    let data ={
       id:this.route.snapshot.paramMap.get('tripid'),
       user_id:localStorage.getItem('id'),
@@ -47,6 +46,21 @@ export class TripDetailPage implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  toggleModule(module){
+    if(module =='helps'){
+      var element = document.getElementById('helps');
+      element.classList.remove("hidden");
+      element.classList.add("show");
+      document.getElementById('receipt').classList.add("hidden");
+    }else{
+      var element = document.getElementById('receipt');
+      element.classList.remove("hidden");
+      element.classList.add("show");
+      document.getElementById('helps').classList.add("hidden");
+    }
+    
   }
 
 }

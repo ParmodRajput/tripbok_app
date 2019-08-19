@@ -35,7 +35,7 @@
     <ul style="list-style-type:square; font-size:15px;">
       <li>{{trips_detail?.full_from}}</li>
     </ul>
-    <div style="border:1px solid #c5c5c5;">
+    <div class="card">
       <ion-grid>
           <ion-row routerLink="/driver-detail/{{trips_detail?.driver_id}}" routerDirection="forward">
             <ion-col>
@@ -69,8 +69,60 @@
         </ion-card-content>
       </ion-slide>
     </ion-slides>
-    <ion-menu-toggle>
-        <ion-button>Toggle Menu</ion-button>
-      </ion-menu-toggle>
+      <!-- Default Segment -->
+      <ion-segment>
+        <ion-segment-button value="helps" (click)="toggleModule('helps')">
+          <ion-label>Helps</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="receipt"  (click)="toggleModule('receipt')">
+          <ion-label>Receipt</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+      <div id="helps" class="hidden" style="width:100%">
+        <ul class="list-group">
+          <li class="list-group-item">Cras justo odio</li>
+          <li class="list-group-item">Dapibus ac facilisis in</li>
+          <li class="list-group-item">Morbi leo risus</li>
+          <li class="list-group-item">Porta ac consectetur ac</li>
+          <li class="list-group-item">Vestibulum at eros</li>
+        </ul>
+      </div>
+      <div id="receipt" class="hidden" style="width:100%">
+        <h5>Go to receipt</h5>
+          <ion-grid>
+              <ion-row>
+                <ion-col size="8">
+                  <div class="ion-text-start">
+                    Trip Fare
+                  </div>
+                </ion-col>
+                <ion-col size="4">
+                  <div class="ion-text-end">
+                   $ {{trips_detail?.fare}}
+                  </div>
+                </ion-col>
+                <ion-col size="8">
+                    <div class="ion-text-start">
+                      Total
+                    </div>
+                  </ion-col>
+                  <ion-col size="4">
+                    <div class="ion-text-end">
+                     $ {{trips_detail?.fare}}
+                    </div>
+                  </ion-col>
+                  <ion-col size="8">
+                      <div class="ion-text-start">
+                        Payment
+                      </div>
+                    </ion-col>
+                    <ion-col size="4">
+                      <div class="ion-text-end">
+                       $ {{trips_detail?.fare}}
+                      </div>
+                    </ion-col>
+              </ion-row>
+            </ion-grid>
+      </div>
   </ion-card-content>
 </ion-content>

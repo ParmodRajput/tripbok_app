@@ -19,22 +19,27 @@ export class AppComponent {
     {
       title: 'Your Trips',
       url: 'trips-list',
-      icon: 'list'
+      icon: 'logo-model-s'
     },
     {
       title: 'Patments',
       url: '/patments',
-      icon: 'list'
+      icon: 'cash'
     },
     {
       title: 'Free Rides',
       url: '/free-rides',
-      icon: 'list'
+      icon: 'today'
+    },
+    {
+      title: 'Helps',
+      url: '/helps',
+      icon: 'help-circle-outline'
     },
     {
       title: 'Settings',
       url: '/settings',
-      icon: 'list'
+      icon: 'settings'
     }
   ];
   public auth =localStorage.getItem("authenticated");
