@@ -1,11 +1,31 @@
-<ion-header>
+<ion-header color="light">
   <ion-toolbar>
     <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
-      </ion-buttons>
-    <ion-title>Driver Detail</ion-title>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <div style="text-align:center;">
+      <ion-title>Driver Detail</ion-title>
+      <ion-avatar slot="start">
+        <img src="{{driver_detail?.driver.profile}}">
+      </ion-avatar>
+    </div>
   </ion-toolbar>
 </ion-header>
 <ion-content>
+  <!-- <ion-item>
+    <ion-text>
+     Name: <h3>{{driver_detail?.name}}</h3>
+    </ion-text>
+  </ion-item>
+  <ion-item>
+    <ion-text>
+      <span>hobbies: <p>{{driver_detail?.driver.hobbies}}</p></span>
+    </ion-text>
+  </ion-item> -->
+  <div class="lane"><h4>Name</h4><p>{{driver_detail?.name}}</p></div>
+  <div class="lane"><h4>hobbies</h4><p>{{driver_detail?.driver.hobbies}}</p></div>
+  <div class="lane"><h4>Form</h4><p>{{driver_detail?.city}}</p></div>
+  <div class="lane"><h4>Rating</h4><p>{{driver_detail?.driver.rating}} <span class="checked">☆</span></p></div>
+  <div class="lane"><h4>experience</h4><p>{{driver_detail?.driver.experience}}</p></div>
 
 </ion-content>

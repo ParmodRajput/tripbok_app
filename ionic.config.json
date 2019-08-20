@@ -1,5 +1,7 @@
 {
   "name": "tripbok",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

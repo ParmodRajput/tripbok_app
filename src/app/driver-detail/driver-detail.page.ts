@@ -7,7 +7,7 @@ import { Router,ActivatedRoute } from '@angular/router';
   styleUrls: ['./driver-detail.page.scss'],
 })
 export class DriverDetailPage implements OnInit {
-  public trips_detail: any;
+  public driver_detail: any;
   // policies= [
   //   {id: 0, src: "http://localhost/tripbok/storage/app/public/media/help.png"},
   //   {id: 2, src: "http://localhost/tripbok/storage/app/public/media/help.png"},
@@ -35,7 +35,7 @@ export class DriverDetailPage implements OnInit {
       // }
       // console.log(ratecom);
       // res['data']['driver_rating'] = ratecom;
-      this.trips_detail =res['data'];
+      this.driver_detail =res['data'];
     }, error => {
        // localStorage.clear();
         //this.router.navigate(['login']);

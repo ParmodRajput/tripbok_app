@@ -1,0 +1,42 @@
+ion-buttons.buttons-first-slot.sc-ion-buttons-ios-h.sc-ion-buttons-ios-s.ios.hydrated {
+    position: absolute;
+    top: 10px;
+}
+ion-avatar.ios.hydrated {
+    margin: 5px auto;
+    position:relative;top:42px;
+    border: 2px solid #fff;
+    box-shadow: 0 0 1px rgba(0,0,00.6);
+    height: 66px;
+    width: 66px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+.header-ios ion-toolbar:last-child ,ion-toolbar.ios.hydrated div{ min-height: 100px;
+}
+ion-toolbar.ios.hydrated .toolbar-container { background: #f5d4bd; padding:5px; margin:0; }
+ion-toolbar.ios.hydrated div ion-title.ios.title-ios.hydrated{ display:block; float: left; padding: 15px;
+    height: auto;}
+    .lane {
+        width: 100%;
+        float: left;
+        padding: 6px 10px;
+    }
+    
+    .lane h4 {
+        float: left;
+        margin:0 18px 0 0;
+
+    }
+    .lane h4:after {
+        content: ':';
+        padding-left: 6px;
+    }
+    
+    .lane p {
+        float: left;
+        line-height: 30px;
+        font-size: 19px;
+        font-weight: 500;
+        margin:0;
+    }
