@@ -10,35 +10,48 @@
 </ion-header>
 
 <ion-content>
-    <ion-card class="welcome-card">
-      <img src="/assets/shapes.svg" alt="" />
-      <ion-card-header>
-        <ion-card-subtitle>Get Started</ion-card-subtitle>
-        <ion-card-title>Welcome to Ionic</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <p>Now that your app has been created, you'll want to start building out features and components. Check out some of the resources below for next steps.</p>
-      </ion-card-content>
-    </ion-card>
-    <ion-list lines="none">
-      <ion-list-header>
-        <ion-label>Resources</ion-label>
-      </ion-list-header>
-      <ion-item href="https://ionicframework.com/docs/">
-        <ion-icon slot="start" color="medium" name="book"></ion-icon>
-        <ion-label>Ionic Documentation</ion-label>
-      </ion-item>
-      <ion-item href="https://ionicframework.com/docs/building/scaffolding">
-        <ion-icon slot="start" color="medium" name="build"></ion-icon>
-        <ion-label>Scaffold Out Your App</ion-label>
-      </ion-item>
-      <ion-item href="https://ionicframework.com/docs/layout/structure">
-        <ion-icon slot="start" color="medium" name="grid"></ion-icon>
-        <ion-label>Change Your App Layout</ion-label>
-      </ion-item>
-      <ion-item href="https://ionicframework.com/docs/theming/basics">
-        <ion-icon slot="start" color="medium" name="color-fill"></ion-icon>
-        <ion-label>Theme Your App</ion-label>
-      </ion-item>
-    </ion-list>
+    <form>
+      <input type="hidden" name="previousLink" id="previousLink" value=""/>
+      <input type="hidden" name="eBookingFrom" id="eBookingFrom" value="Admin" />
+      <input type="hidden" name="backlink" id="backlink" value="cab_booking.php"/>
+      <input type="hidden" name="distance" id="distance" value="">
+      <input type="hidden" name="duration" id="duration" value="">
+      <!-- form -->
+      <input type="hidden" name="data[Trip][from_lat_long]" id="from_lat_long" value="" >
+      <input type="hidden" name="data[Trip][from_lat]" id="from_lat" value="" >
+      <input type="hidden" name="data[Trip][from_long]" id="from_long" value="" >
+      <input type="hidden" name="data[Trip][to_lat_long]" id="to_lat_long" value="" >
+      <input type="hidden" name="data[Trip][to_lat]" id="to_lat" value="" >
+      <input type="hidden" name="data[Trip][to_long]" id="to_long" value="" >
+      <!-- form  -->
+      <input type="hidden" name="fNightPrice" id="fNightPrice" value="" >
+      <input type="hidden" name="fPickUpPrice" id="fPickUpPrice" value="" >
+      <input type="hidden" name="eFlatTrip" id="eFlatTrip" value="" >
+      <input type="hidden" name="fFlatTripPrice" id="fFlatTripPrice" value="" >
+      <input type="hidden" value="1" id="location_found" name="location_found">
+      <input type="hidden" value="" id="user_type" name="user_type" >
+      <input type="hidden" value="" id="iUserId" name="iUserId" >
+      <input type="hidden" value="" id="eStatus" name="eStatus" >
+      <input type="hidden" value="Pacific/Honolulu" id="vTimeZone" name="vTimeZone" >
+      <input type="hidden" value="US" id="vRideCountry" name="vRideCountry" >
+      <input type="hidden" value="" id="iCabBookingId" name="iCabBookingId" >
+      <input type="hidden" value="AIzaSyCXxuaZD88IKBShrKBPezrE1dHho2hxuPs" id="google_server_key" name="google_server_key" >
+      <input type="hidden" value="" id="getradius" name="getradius" >
+      <input type="hidden" value="KMs" id="eUnit" name="eUnit" >
+      <input type="hidden" name="fTollPrice" id="fTollPrice" value="">
+      <input type="hidden" name="vTollPriceCurrencyCode" id="vTollPriceCurrencyCode" value="">
+      <input type="hidden" name="eTollSkipped" id="eTollSkipped" value="">
+      <input type="hidden" value="" id="eType" name="eType" />
+      <input type="hidden" name="baseurl" id="baseurl" value="">
+      <input type="hidden" name="iDriverId_temp" id="iDriverId_temp">
+      <input type="hidden" name="newType" id="newType" value="">
+      <input type="hidden" name="submitbtn" id="submitbtn">
+      <input type="text" name="to" id="to">
+      <input type="text" name="from" id="from">
+    </form>
+    <div class="row">
+      <div class="col-md-12">
+        <div #map id="map" style="width:100%;height: 500px;"></div>
+      </div>
+    </div>
 </ion-content>

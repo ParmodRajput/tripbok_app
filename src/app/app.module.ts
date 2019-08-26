@@ -21,7 +21,7 @@ import {MatTabsModule} from '@angular/material';
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
-    MatTabsModule
+    MatTabsModule,
   ],
   providers: [
     StatusBar,
