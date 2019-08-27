@@ -1,14 +1,19 @@
 import { Component,OnInit  } from '@angular/core';
+import { AuthService } from '../services/auth/auth.service';
+import { Router,ActivatedRoute } from '@angular/router';
 declare var $: any;
 declare var google: any;
+declare var cabs: any;
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit{
 
-  constructor() {}
+  constructor(private AuthService: AuthService, private router: Router,private route: ActivatedRoute) {
+
+  }
 
   ngOnInit() {
     $(document).ready(function() {
@@ -18,7 +23,7 @@ export class HomePage {
       var eType;
       var eFlatTrip = 'No';
       var eTypeQ11 = 'yes';
-      var map;
+      //var map;
       var geocoder;
       var circle;
       var markers = [];
@@ -46,10 +51,52 @@ export class HomePage {
               lat: position.coords.latitude,
               lng: position.coords.longitude
             };
+            geocoder.geocode({'location': pos}, function(results, status) {
+                if (status === 'OK') {
+                  if (results[0]) {
+                   // map.setZoom(11);
+                    var marker = new google.maps.Marker({
+                      position: pos,
+                      map: map
+                    });
+                    $("#from").val(results[0].formatted_address);
+                    //console.log(results[0].formatted_address);
+                    // infowindow.setContent(results[0].formatted_address);
+                    // infowindow.open(map, marker);
+                  } else {
+                    window.alert('No results found');
+                  }
+                } else {
+                  window.alert('Geocoder failed due to: ' + status);
+                }
+              });
+            //$("#to").val(position);
+            $("#from_lat").val(position.coords.latitude);
+            $("#from_long").val(position.coords.longitude);
+            //cab fetch
+            let data ={
+                user_id:localStorage.getItem('id'),
+                latitude:position.coords.latitude,
+                longitude: position.coords.longitude
+              }
+            checkCab(data,map);
+            //cab fetch on focusout form field
+            // $("#from").focusout(function(){
+            //     let datac ={     
+            //         user_id:localStorage.getItem('id'),
+            //         latitude:$("#from_lat").val(),
+            //         longitude:$("#from_long").val()
+            //       }
+            //     // var map = new google.maps.Map(document.getElementById('map'), {
+            //     //     zoom: 7,
+            //     //     center: {lat: 41.85, lng: -87.65}
+            //     // });
+            //       checkCab(datac,map);
+            //   });
 
             infoWindow.setPosition(pos);
-            infoWindow.setContent('<img src="http://localhost/tripbok/storage/app/public/media/loc.png" style="width:20px;">');
-            infoWindow.open(map);
+            //infoWindow.setContent('<img src="http://localhost/tripbok/storage/app/public/media/loc.png" style="width:20px;">');
+            //infoWindow.open(map);
             map.setCenter(pos);
           }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
@@ -131,6 +178,12 @@ export class HomePage {
               var latlng = new google.maps.LatLng($("#from_lat").val(), $("#from_long").val());
               console.log('hwere');
               console.log(latlng.lat());
+              let data ={
+                user_id:localStorage.getItem('id'),
+                latitude:$("#from_lat").val(),
+                longitude:$("#from_long").val()
+              }
+              checkCab(data,map);
               setMarker(latlng, 'from_loc');
           }
           if ($("#to").val() != "" && $("#from").val() == '') {
@@ -355,6 +408,51 @@ export class HomePage {
           routeDirections();
       }
     });
+
+    function checkCab(data,map){
+        $.ajax({
+            beforeSend: function(xhrObj){
+                xhrObj.setRequestHeader("Content-Type","application/json");
+                xhrObj.setRequestHeader("Accept","application/json");
+                xhrObj.setRequestHeader("Authorization",localStorage.getItem('token'));
+            },
+            type: "POST",
+            url: "http://localhost/tripbok/api/home",
+            async:false,
+            data: JSON.stringify(data),
+            contentType: "application/json",
+            success: function (res) {
+                let cabss = res.data;
+                if(cabss.length!=0){
+                    $.each(res.data, function(k, v) {
+                        // console.log(k);
+                         console.log(v.latitude);
+                        var image = 'http://localhost/tripbok/storage/app/public/media/cab.png';
+                        var beachMarker = new google.maps.Marker({
+                        position: {lat: parseFloat(v.latitude), lng: parseFloat(v.longitude)},
+                        map: map,
+                        icon: image
+                        });
+                    });
+                }else{
+                    var infoWindow = new google.maps.InfoWindow;
+                    var pos = {
+                        lat: parseFloat($("#from_lat").val()),
+                        lng: parseFloat($("#from_long").val())
+                      };
+                      console.log(infoWindow);
+                    infoWindow.setPosition(pos);
+                    infoWindow.setContent('Cabs not found');
+                    infoWindow.open(map);
+                    // alert();
+                }
+            },
+            error: function (textStatus, errorThrown) {
+                // localStorage.clear();
+                // this.router.navigate(['login']);
+            }
+        });
+    }
  }
 
 }

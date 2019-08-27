@@ -27,6 +27,17 @@ export class AuthService {
      return this.http.post('http://localhost/tripbok/api/register',data,requestOptions)
   }
 
+  Home(data) {
+    // console.log(data.token);
+    let headers = new HttpHeaders({
+        'Accept':'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': data.token
+    });
+    const requestOptions = { headers: headers }; 
+     return this.http.post('http://localhost/tripbok/api/home',data,requestOptions)
+  }
+
   TripsList(data) {
     // console.log(data.token);
     let headers = new HttpHeaders({
