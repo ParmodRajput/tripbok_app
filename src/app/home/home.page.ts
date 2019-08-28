@@ -1,6 +1,9 @@
 import { Component,OnInit  } from '@angular/core';
 import { AuthService } from '../services/auth/auth.service';
 import { Router,ActivatedRoute } from '@angular/router';
+import { environment } from '../../environments/environment';
+const serverApiUrl = environment.serverApiUrl;
+const serverUrl = environment.serverUrl;
 declare var $: any;
 declare var google: any;
 declare var cabs: any;
@@ -95,7 +98,7 @@ export class HomePage implements OnInit{
             //   });
 
             infoWindow.setPosition(pos);
-            //infoWindow.setContent('<img src="http://localhost/tripbok/storage/app/public/media/loc.png" style="width:20px;">');
+            //infoWindow.setContent('<img src=serverUrl+"/storage/app/public/media/loc.png" style="width:20px;">');
             //infoWindow.open(map);
             map.setCenter(pos);
           }, function() {
@@ -374,7 +377,7 @@ export class HomePage implements OnInit{
           marker.id = valIcon;
           markers.push(marker);
           map.setCenter(marker.getPosition());
-          map.setZoom(15);
+          map.setZoom(10);
       
           if (valIcon == "from_loc") {
               marker.addListener('dragend', function (event) {
@@ -407,8 +410,49 @@ export class HomePage implements OnInit{
           }
           routeDirections();
       }
-    });
 
+        $("#confirmBooking").click(function(){
+            if($('#to').val()!='' && $('#from').val()!=''){
+                //$(this).prop('disabled', true);
+                let trip ={
+                    to:$('#to').val(),
+                    from:$('#from').val(),
+                    to_lat:$('#to_lat').val(),
+                    to_long:$('#to_long').val(),
+                    to_lat_long:$('#to_lat_long').val(),
+                    from_lat:$('#from_lat').val(),
+                    from_long:$('#from_long').val(),
+                    from_lat_long:$('#from_lat_long').val(),
+                    passenger_id:localStorage.getItem('id'),
+                    }
+                    booktrip(trip);
+            }else{
+                $("input").focus();
+            }
+        });
+    });
+    function booktrip(trip){
+        $.ajax({
+            beforeSend: function(xhrObj){
+                xhrObj.setRequestHeader("Content-Type","application/json");
+                xhrObj.setRequestHeader("Accept","application/json");
+                xhrObj.setRequestHeader("Authorization",localStorage.getItem('token'));
+            },
+            type: "POST",
+            url: serverApiUrl+"/tripbook",
+            async:false,
+            data: JSON.stringify(trip),
+            contentType: "application/json",
+            success: function (res) {
+                let cabss = res.data;    
+                console.log(cabss);           
+            },
+            error: function (textStatus, errorThrown) {
+                // localStorage.clear();
+                // this.router.navigate(['login']);
+            }
+        });
+    }
     function checkCab(data,map){
         $.ajax({
             beforeSend: function(xhrObj){
@@ -417,21 +461,19 @@ export class HomePage implements OnInit{
                 xhrObj.setRequestHeader("Authorization",localStorage.getItem('token'));
             },
             type: "POST",
-            url: "http://localhost/tripbok/api/home",
+            url: serverApiUrl+"/home",
             async:false,
             data: JSON.stringify(data),
             contentType: "application/json",
             success: function (res) {
                 let cabss = res.data;
+                let cabicon =res.icon;
                 if(cabss.length!=0){
                     $.each(res.data, function(k, v) {
-                        // console.log(k);
-                         console.log(v.latitude);
-                        var image = 'http://localhost/tripbok/storage/app/public/media/cab.png';
                         var beachMarker = new google.maps.Marker({
                         position: {lat: parseFloat(v.latitude), lng: parseFloat(v.longitude)},
                         map: map,
-                        icon: image
+                        icon: cabicon
                         });
                     });
                 }else{
@@ -448,11 +490,11 @@ export class HomePage implements OnInit{
                 }
             },
             error: function (textStatus, errorThrown) {
-                // localStorage.clear();
-                // this.router.navigate(['login']);
+                localStorage.clear();
+                this.router.navigate(['login']);
             }
         });
     }
  }
-
+ 
 }
