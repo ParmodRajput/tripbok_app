@@ -492,6 +492,7 @@ export class HomePage implements OnInit{
             error: function (textStatus, errorThrown) {
                 localStorage.clear();
                 this.loginpage;
+
             }
         });
     }
