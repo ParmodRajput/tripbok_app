@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth/auth.service';
 import { Router,ActivatedRoute } from '@angular/router';
+import { environment } from '../../environments/environment';
+const serverApiUrl = environment.serverApiUrl;
+const serverUrl = environment.serverUrl;
 @Component({
   selector: 'app-trip-detail',
   templateUrl: './trip-detail.page.html',
@@ -9,11 +12,11 @@ import { Router,ActivatedRoute } from '@angular/router';
 export class TripDetailPage implements OnInit {
   public trips_detail: any;
   policies= [
-    {id: 0, src: "http://localhost/tripbok/storage/app/public/media/help.png"},
-    {id: 2, src: "http://localhost/tripbok/storage/app/public/media/help.png"},
-    {id: 3, src: "http://localhost/tripbok/storage/app/public/media/help.png"},
-    {id: 4, src: "http://localhost/tripbok/storage/app/public/media/help.png"},
-    {id: 5, src: "http://localhost/tripbok/storage/app/public/media/help.png"}, 
+    {id: 0, src: serverUrl+"/storage/app/public/media/help.png"},
+    {id: 2, src: serverUrl+"/storage/app/public/media/help.png"},
+    {id: 3, src: serverUrl+"/storage/app/public/media/help.png"},
+    {id: 4, src: serverUrl+"/storage/app/public/media/help.png"},
+    {id: 5, src: serverUrl+"/storage/app/public/media/help.png"}, 
   ];
   constructor(private AuthService: AuthService, private router: Router,private route: ActivatedRoute) {
    let data ={
