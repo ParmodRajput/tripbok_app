@@ -28,7 +28,7 @@ export class AppComponent {
     },
     {
       title: 'Free Rides',
-      url: '/free-rides',
+      url: '/freeride',
       icon: 'today'
     },
     {

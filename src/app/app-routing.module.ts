@@ -16,7 +16,8 @@ const routes: Routes = [
   },
   { path: 'register', loadChildren: './register/register.module#RegisterPageModule',canActivate: [GuardGuard] },
   { path: 'trip-detail/:tripid', loadChildren: './trip-detail/trip-detail.module#TripDetailPageModule',canActivate: [GuardGuard] },
-  { path: 'driver-detail/:driverid', loadChildren: './driver-detail/driver-detail.module#DriverDetailPageModule',canActivate: [GuardGuard] }
+  { path: 'driver-detail/:driverid', loadChildren: './driver-detail/driver-detail.module#DriverDetailPageModule',canActivate: [GuardGuard] },  { path: 'freeride', loadChildren: './freeride/freeride.module#FreeridePageModule' }
+
 
 
 ];
