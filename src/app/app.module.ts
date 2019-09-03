@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { GuardGuard } from  './guards/guard.guard';
 import { IonicRatingModule } from 'ionic-rating';
 import {MatTabsModule} from '@angular/material';
+import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal/ngx';
 // import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
@@ -27,6 +28,7 @@ import {MatTabsModule} from '@angular/material';
     StatusBar,
     GuardGuard,
     SplashScreen,
+    PayPal,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
