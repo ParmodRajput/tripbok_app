@@ -22,8 +22,8 @@ export class AppComponent {
       icon: 'logo-model-s'
     },
     {
-      title: 'Patments',
-      url: '/patments',
+      title: 'Payments',
+      url: '/payments',
       icon: 'cash'
     },
     {

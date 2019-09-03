@@ -33,8 +33,8 @@ export class LoginPage implements OnInit {
            this.router.navigate(['home']);
          }
         }, error => {
-          //localStorage.clear();
-          //this.router.navigate(['login']);
+          localStorage.clear();
+          this.router.navigate(['login']);
           console.log('kk');
          console.log(error);
        });
