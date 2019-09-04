@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { GuardGuard } from  './guards/guard.guard';
 import { IonicRatingModule } from 'ionic-rating';
 import {MatTabsModule} from '@angular/material';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal/ngx';
 // import { IonicStorageModule } from '@ionic/storage';
 
@@ -19,6 +20,8 @@ import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal
   imports: [
     IonicRatingModule,
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,

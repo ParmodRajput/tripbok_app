@@ -10,8 +10,22 @@ export class LoginPage implements OnInit {
 
   constructor(private AuthService: AuthService, private router: Router) {}
   data: any;
+  validation_error ={
+    email:'',
+    password:''
+  }
 
   ngOnInit() {
+  }
+  
+  checkFocus(type){
+    if(type == 'email'){
+      this.validation_error.email = '';
+    }
+    if(type == 'password'){
+      this.validation_error.password = '';
+    }
+     
   }
   
   login(form){
@@ -33,8 +47,24 @@ export class LoginPage implements OnInit {
            this.router.navigate(['home']);
          }
         }, error => {
+          if(error.error.validator_error){
+            let valdation = error.error.validator_error;
+            if(valdation.email){
+              this.validation_error.email='';
+              for(let error of valdation.email) {
+                this.validation_error.email += "<p>"+error+"</p><br>";
+                }
+                console.log(this.validation_error.email);
+            }
+            if(valdation.password){
+              this.validation_error.password ='';
+              for(let error of valdation.password) {
+                this.validation_error.password += "<p>"+error+"</p><br>";
+                }
+            }
+          }
           localStorage.clear();
-          this.router.navigate(['login']);
+          //this.router.navigate(['login']);
           console.log('kk');
          console.log(error);
        });

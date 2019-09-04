@@ -8,13 +8,17 @@
 			</div>
 			<div padding>
 				<ion-item>
-				<ion-input name="email" type="email" placeholder="your@email.com" ngModel required></ion-input>
+				<ion-input name="email" type="email" placeholder="your@email.com" ngModel required (ionFocus)="checkFocus('email')"></ion-input>
 				</ion-item>
+				<span *ngIf="validation_error.email" style="color:red;" [innerHTML] ="validation_error.email">	
+				</span>
 			</div>
 			<div padding>
 				<ion-item>
-				<ion-input name="password" type="password" placeholder="Password" ngModel required></ion-input>
+				<ion-input name="password" type="password" placeholder="Password" ngModel required (ionFocus)="checkFocus('email')"></ion-input>
 				</ion-item>
+				<span *ngIf="validation_error.password" style="color:red;"  [innerHTML] ="validation_error.password">
+				</span>
 			</div>
 			<div padding>
 				<ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Login</ion-button>
