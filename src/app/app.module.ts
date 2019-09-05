@@ -11,6 +11,7 @@ import { GuardGuard } from  './guards/guard.guard';
 import { IonicRatingModule } from 'ionic-rating';
 import {MatTabsModule} from '@angular/material';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/contacts/ngx';
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal/ngx';
 // import { IonicStorageModule } from '@ionic/storage';
 
@@ -32,6 +33,7 @@ import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal
     GuardGuard,
     SplashScreen,
     PayPal,
+    Contacts,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

@@ -24,6 +24,7 @@
     "@angular/platform-browser": "~8.1.2",
     "@angular/platform-browser-dynamic": "~8.1.2",
     "@angular/router": "~8.1.2",
+    "@ionic-native/contacts": "^5.13.0",
     "@ionic-native/core": "^5.12.0",
     "@ionic-native/geolocation": "^5.0.0",
     "@ionic-native/google-maps": "^5.5.0",
@@ -36,6 +37,7 @@
     "bootstrap": "^4.3.1",
     "card.io.cordova.mobilesdk": "^2.1.0",
     "cordova-android": "^8.0.0",
+    "cordova-plugin-contacts": "^3.0.1",
     "core-js": "^2.5.4",
     "hammerjs": "^2.0.8",
     "ionic-rating": "^2.0.0",
@@ -90,7 +92,8 @@
         "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
       },
       "cordova-plugin-ionic-keyboard": {},
-      "com.paypal.cordova.mobilesdk": {}
+      "com.paypal.cordova.mobilesdk": {},
+      "cordova-plugin-contacts": {}
     },
     "platforms": [
       "android"
