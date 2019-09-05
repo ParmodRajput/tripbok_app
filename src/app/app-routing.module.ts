@@ -16,9 +16,11 @@ const routes: Routes = [
   },
   { path: 'register', loadChildren: './register/register.module#RegisterPageModule',canActivate: [GuardGuard] },
   { path: 'trip-detail/:tripid', loadChildren: './trip-detail/trip-detail.module#TripDetailPageModule',canActivate: [GuardGuard] },
-  { path: 'driver-detail/:driverid', loadChildren: './driver-detail/driver-detail.module#DriverDetailPageModule',canActivate: [GuardGuard] },  { path: 'freeride', loadChildren: './freeride/freeride.module#FreeridePageModule' },
-  { path: 'payments', loadChildren: './payments/payments.module#PaymentsPageModule' },
-  { path: 'settings', loadChildren: './settings/settings.module#SettingsPageModule' }
+  { path: 'driver-detail/:driverid', loadChildren: './driver-detail/driver-detail.module#DriverDetailPageModule',canActivate: [GuardGuard] },
+  { path: 'freeride', loadChildren: './freeride/freeride.module#FreeridePageModule',canActivate: [GuardGuard] },
+  { path: 'payments', loadChildren: './payments/payments.module#PaymentsPageModule',canActivate: [GuardGuard] },
+  { path: 'settings', loadChildren: './settings/settings.module#SettingsPageModule' ,canActivate: [GuardGuard]},
+  { path: 'edit-profile', loadChildren: './edit-profile/edit-profile.module#EditProfilePageModule',canActivate: [GuardGuard] }
 
 
 

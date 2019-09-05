@@ -19,6 +19,8 @@
 				</ion-item>
 				<span *ngIf="validation_error.password" style="color:red;"  [innerHTML] ="validation_error.password">
 				</span>
+				<span *ngIf="validation_error.message" style="color:red;"  [innerHTML] ="validation_error.message">
+				</span>
 			</div>
 			<div padding>
 				<ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Login</ion-button>

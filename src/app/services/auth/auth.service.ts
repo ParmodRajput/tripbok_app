@@ -82,4 +82,26 @@ export class AuthService {
      return this.http.post(serverApiUrl+'/driver-detail',formdata,requestOptions)
   }
 
+  LogOut(data) {
+    // console.log(data.token);
+    let headers = new HttpHeaders({
+        'Accept':'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': data.token
+    });
+    const requestOptions = { headers: headers }; 
+     return this.http.post(serverApiUrl+'/logout',data,requestOptions)
+  }
+//profile
+  profile(data) {
+    // console.log(data.token);
+    let headers = new HttpHeaders({
+        'Accept':'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': data.token
+    });
+    const requestOptions = { headers: headers }; 
+     return this.http.get(serverApiUrl+'/profile',requestOptions)
+  }
+
 }

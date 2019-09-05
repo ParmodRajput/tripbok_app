@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth/auth.service';
 import { Router } from '@angular/router';
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -12,7 +13,8 @@ export class LoginPage implements OnInit {
   data: any;
   validation_error ={
     email:'',
-    password:''
+    password:'',
+    message:''
   }
 
   ngOnInit() {
@@ -25,7 +27,9 @@ export class LoginPage implements OnInit {
     if(type == 'password'){
       this.validation_error.password = '';
     }
-     
+    if(type =='email' || type =='password'){
+      this.validation_error.message = '';
+    } 
   }
   
   login(form){
@@ -62,6 +66,9 @@ export class LoginPage implements OnInit {
                 this.validation_error.password += "<p>"+error+"</p><br>";
                 }
             }
+          }
+          if(error.error.authenticated == false){
+            this.validation_error.message =error.error.message;
           }
           localStorage.clear();
           //this.router.navigate(['login']);
