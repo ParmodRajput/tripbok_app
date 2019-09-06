@@ -16,18 +16,22 @@
   <ion-item>
       <ion-label>Favorites</ion-label>
   </ion-item>
-  <ion-item (click)="profile()">
+  <ion-item (click)="fetchDeviceContact()">
       <ion-label>Trusted Contents</ion-label>
   </ion-item>
-  <ion-button color="light" (click)="fetchDeviceContact()">hhh</ion-button>
+
   <!-- <ion-select>
       <ion-option *ngFor="let contact of contactlist" value="{{contact.phoneNumbers}}">{{contact.displayName}}</ion-option>
   </ion-select> -->
-  <ion-item>
+  <!-- <ion-item>
     <ion-label>Trusted Contents</ion-label>
     <ion-select value="" >
       <ion-select-option *ngFor="let contact of contactlist" value="{{contact.phoneNumbers}}">{{contact.displayName}}</ion-select-option>
     </ion-select>
-  </ion-item>
+  </ion-item> -->
+  <select>
+    <!-- <option *ngFor="let contact of contactlist" value="{{contact.phoneNumbers}}">{{contact.displayName}}</option> -->
+    <option  *ngFor="let contact of contactlist | keyvalue" value="{{contact.key}}">{{contact.value}}</option>
+  </select>
     <ion-button color="light" (click)="LogOut()">Log Out</ion-button>
 </ion-content>

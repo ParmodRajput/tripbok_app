@@ -14,7 +14,9 @@ const serverUrl = environment.serverUrl;
 export class SettingsPage implements OnInit {
   data:any;
    contactlist =[];
+   //contactar=[];
   constructor(public navCtrl: NavController, private AuthService: AuthService, private router: Router,private route: ActivatedRoute,private contacts: Contacts) {
+    //this.contactlist['dsd'] ='dsfbfghgfhfghgffghfghffhffg';
     // let param ={
     //   token:localStorage.getItem('token'),
     //   user_id:localStorage.getItem('id'),
@@ -44,11 +46,13 @@ export class SettingsPage implements OnInit {
        hasPhoneNumber:true	
    };
 
-   this.contacts.find(["*"],options).then((res) => {
-     for (var i = 0; i < res.length; i++) {
+   this.contacts.find(['displayName', 'name', 'phoneNumbers', 'emails'],options).then((res) => {
+    console.log("res >>>",res);
+      for (var i = 0; i < res.length; i++) {
            var contact = res[i];
-           var no =res[i].name.formatted;
-           var phonenumber=res[i].phoneNumbers;
+           //var no =res[i].name.formatted;
+           var no =contact.displayName;
+           var phonenumber=contact.phoneNumbers;
            if(phonenumber != null) {
                for(var n=0;n<phonenumber.length;n++) {
                    var type=phonenumber[n].type;
@@ -63,17 +67,28 @@ export class SettingsPage implements OnInit {
                            mobile=mobile_no;
                           
                        }
-                       var contactData={
-                           "displayName":no,
-                           "phoneNumbers":mobile,
-                       }
-                       this.contactlist.push(contactData);
+                      //  var contactData={
+                      //      "displayName":(no !=null ? no : mobile),
+                      //      "phoneNumbers":mobile,
+                      //  }
+                       this.contactlist[mobile] =(no !=null ? no : mobile);
+                      // this.contactlist.push(contactData);
                    }
                }
            }
        }
-
-       console.log("contactlist >>>",this.contactlist);
+      //  function compare( a, b ) {
+      //   if ( a.displayName < b.displayName ){
+      //     return -1;
+      //   }
+      //   if ( a.displayName > b.displayName ){
+      //     return 1;
+      //   }
+      //   return 0;
+      // }     
+      // this.contactlist = this.contactlist.sort( compare );
+      // console.log("contactlist >>>",this.contactlist);
+      console.log("this.contactar >>>",this.contactlist);
 
    }).catch((err) => {
        console.log('err',err);
@@ -82,14 +97,14 @@ export class SettingsPage implements OnInit {
  }  
 
   profile(){
-      let contact: Contact = this.contacts.create();
-console.log(contact);
-      contact.name = new ContactName(null, 'Smith', 'John');
-      contact.phoneNumbers = [new ContactField('mobile', '6471234567')];
-      contact.save().then(
-        () => console.log('Contact saved!', contact),
-        (error: any) => console.error('Error saving contact.', error)
-      );
+//       let contact: Contact = this.contacts.create();
+// console.log(contact);
+//       contact.name = new ContactName(null, 'Smith', 'John');
+//       contact.phoneNumbers = [new ContactField('mobile', '6471234567')];
+//       contact.save().then(
+//         () => console.log('Contact saved!', contact),
+//         (error: any) => console.error('Error saving contact.', error)
+//       );
   }
 
   LogOut(){
