@@ -20,7 +20,8 @@ const routes: Routes = [
   { path: 'freeride', loadChildren: './freeride/freeride.module#FreeridePageModule',canActivate: [GuardGuard] },
   { path: 'payments', loadChildren: './payments/payments.module#PaymentsPageModule',canActivate: [GuardGuard] },
   { path: 'settings', loadChildren: './settings/settings.module#SettingsPageModule' ,canActivate: [GuardGuard]},
-  { path: 'edit-profile', loadChildren: './edit-profile/edit-profile.module#EditProfilePageModule',canActivate: [GuardGuard] }
+  { path: 'edit-profile', loadChildren: './edit-profile/edit-profile.module#EditProfilePageModule',canActivate: [GuardGuard] },  { path: 'contacts', loadChildren: './contacts/contacts.module#ContactsPageModule' }
+
 
 
 

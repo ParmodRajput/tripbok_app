@@ -1,0 +1,23 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>Contacts</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar type="text" debounce="500" (ionInput)="getItems($event)"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+  <ion-list>
+    <ion-item *ngFor="let item of items | keyvalue" (click)="selectContacts($event)" class="" title="{{item.key}}" >
+        {{items.value}}
+      <ion-note slot="end" class="">
+        <span class="checkbox checkhide">
+          <div class="checkmark_circle"></div>
+          <div class="checkmark_stem"></div>
+          <div class="checkmark_kick"></div>
+        </span>
+      </ion-note>
+    </ion-item>
+
+  </ion-list>
+</ion-content>
