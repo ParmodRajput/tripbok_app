@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  serverApiUrl:'http://112.196.51.236/tripbok/api',//'http://localhost/tripbok/api',
-  serverUrl: 'http://112.196.51.236/tripbok/', //'http://localhost/tripbok',
+  serverApiUrl:'http://112.196.51.236/tripbok/api',
+  serverUrl:'http://112.196.51.236/tripbok/',
 };
 
 /*

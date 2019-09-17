@@ -17,21 +17,35 @@
       <ion-label>Favorites</ion-label>
   </ion-item>
   <ion-item routerLink="/contacts">
-      <ion-label>Trusted Contents</ion-label>
+    <ion-label>
+      <h3>Trusted Contents</h3>
+      <br>
+      <h4><ion-icon name="contacts"></ion-icon>manage Trusted Contacts</h4>
+      <p>Share your trip status with family and friends in a single tap.</p>
+    </ion-label>  
   </ion-item>
-
-  <!-- <ion-select>
-      <ion-option *ngFor="let contact of contactlist" value="{{contact.phoneNumbers}}">{{contact.displayName}}</ion-option>
-  </ion-select> -->
-  <!-- <ion-item>
-    <ion-label>Trusted Contents</ion-label>
-    <ion-select value="" >
-      <ion-select-option *ngFor="let contact of contactlist" value="{{contact.phoneNumbers}}">{{contact.displayName}}</ion-select-option>
-    </ion-select>
-  </ion-item> -->
-  <select>
-    <!-- <option *ngFor="let contact of contactlist" value="{{contact.phoneNumbers}}">{{contact.displayName}}</option> -->
-    <option  *ngFor="let contact of contactlist | keyvalue" value="{{contact.key}}">{{contact.value}}</option>
-  </select>
-    <ion-button color="light" (click)="LogOut()">Log Out</ion-button>
+  <ion-item routerLink="/safety">
+    <ion-label>
+      <h4>Safety</h4>
+      <p>Control your safety settings including Ride Check notifications.</p>
+    </ion-label>
+    
+</ion-item>
+<ion-item routerLink="/privacy">
+  <ion-label>
+    <h4>Privacy</h4>
+    <p>manage the data you share with us.</p>
+  </ion-label>
+</ion-item>
+<ion-item routerLink="/security">
+  <ion-label>
+    <h4>Security</h4>
+    <p>Control your account security with 2-step verification.</p>
+  </ion-label>
+</ion-item>
+<ion-item (click)="LogOut()">
+  <ion-label>
+    <h4>Log Out</h4>
+  </ion-label>
+</ion-item>
 </ion-content>

@@ -9,6 +9,7 @@ import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/cont
   styleUrls: ['./contacts.page.scss'],
 })
 export class ContactsPage implements OnInit {
+  contactarr =[];
   contactlist =[];
   data:any;
   selectedcontacts = [];
@@ -17,6 +18,7 @@ export class ContactsPage implements OnInit {
   isItemAvailable = false;
 
   constructor(public navCtrl: NavController, private AuthService: AuthService, private router: Router,private route: ActivatedRoute,private contacts: Contacts) {
+    // this.items.length = 50;
     this.fetchDeviceContact('');
     this.items =this.contactlist;
   }
@@ -29,6 +31,9 @@ export class ContactsPage implements OnInit {
     if(event.target.classList.toggle('select')){
       event.target.querySelector('.checkbox').classList.remove('checkhide');
       event.target.querySelector('.checkbox').classList.add('checkmark');
+      // let conobj ={
+
+      // }
       this.selectedcontacts.push(eventvalue);
     }else{
       event.target.querySelector('.checkbox').classList.remove('checkmark');
@@ -75,12 +80,29 @@ export class ContactsPage implements OnInit {
                            var mobile_no=phone.replace(/[^a-zA-Z0-9]/g, "");
                            mobile=mobile_no;   
                        }
-                       this.contactlist[mobile] =(no !=null ? no : mobile);
+                       this.contactarr[mobile] =(no !=null ? no : mobile);
                    }
                }
            }
        }
-      console.log("this.contactar >>>",this.contactlist);
+      for (var v in this.contactarr){  
+        var obj ={
+          number:v,
+          name:this.contactarr[v]
+        }
+        this.contactlist.push(obj); 
+      }
+      function compare( a, b ) {
+        if ( a.name < b.name ){
+          return -1;
+        }
+        if ( a.name > b.name ){
+          return 1;
+        }
+        return 0;
+      }
+      this.contactlist = this.contactlist.sort( compare );
+     console.log("this.contactar >>>",this.contactlist);
    }).catch((err) => {
        console.log('err',err);
    });
@@ -98,7 +120,7 @@ export class ContactsPage implements OnInit {
     if (val && val.trim() != '') {
       this.isItemAvailable = true;
       this.items = this.items.filter((item) => {
-        return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
+        return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
   }

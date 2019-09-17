@@ -20,7 +20,14 @@ const routes: Routes = [
   { path: 'freeride', loadChildren: './freeride/freeride.module#FreeridePageModule',canActivate: [GuardGuard] },
   { path: 'payments', loadChildren: './payments/payments.module#PaymentsPageModule',canActivate: [GuardGuard] },
   { path: 'settings', loadChildren: './settings/settings.module#SettingsPageModule' ,canActivate: [GuardGuard]},
-  { path: 'edit-profile', loadChildren: './edit-profile/edit-profile.module#EditProfilePageModule',canActivate: [GuardGuard] },  { path: 'contacts', loadChildren: './contacts/contacts.module#ContactsPageModule' }
+  { path: 'edit-profile', loadChildren: './edit-profile/edit-profile.module#EditProfilePageModule',canActivate: [GuardGuard] },  { path: 'contacts', loadChildren: './contacts/contacts.module#ContactsPageModule' },
+  { path: 'safety', loadChildren: './safety/safety.module#SafetyPageModule' },
+  { path: 'privacy', loadChildren: './privacy/privacy.module#PrivacyPageModule' },
+  { path: 'security', loadChildren: './security/security.module#SecurityPageModule' },
+  { path: 'twostepvarivication', loadChildren: './twostepvarivication/twostepvarivication.module#TwostepvarivicationPageModule' },
+  { path: 'location', loadChildren: './location/location.module#LocationPageModule' },
+  { path: 'notification', loadChildren: './notification/notification.module#NotificationPageModule' },
+  { path: 'chek-risk', loadChildren: './chek-risk/chek-risk.module#ChekRiskPageModule' }
 
 
 

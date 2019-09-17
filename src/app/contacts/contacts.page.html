@@ -1,5 +1,8 @@
 <ion-header translucent>
-  <ion-toolbar>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
     <ion-title>Contacts</ion-title>
   </ion-toolbar>
   <ion-toolbar>
@@ -8,8 +11,8 @@
 </ion-header>
 <ion-content fullscreen>
   <ion-list>
-    <ion-item *ngFor="let item of items | keyvalue" (click)="selectContacts($event)" class="" title="{{item.key}}" >
-        {{items.value}}
+    <ion-item *ngFor="let item of items" (click)="selectContacts($event)" class="" title="{{item.number}}" >
+      {{item.name}}
       <ion-note slot="end" class="">
         <span class="checkbox checkhide">
           <div class="checkmark_circle"></div>

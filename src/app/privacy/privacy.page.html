@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="dark">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="home"></ion-back-button>
+      </ion-buttons>
+    <ion-title>Privacy</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item routerLink="/location">
+    <ion-label>
+      <h5>Location</h5>
+      <p>Update your location sharing preferences.</p>
+    </ion-label>
+  </ion-item>
+  <ion-item routerLink="/notification">
+    <ion-label>
+      <h5>Notifications</h5>
+      <p>Control what messages you receive form Uber.</p>
+    </ion-label>
+  </ion-item>
+</ion-content>
+<ion-footer no-shadow>
+  <ion-toolbar position="bottom">
+      <ion-button color="danger" expand="full">Delete Your Account</ion-button>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-icon name="close-circle" routerLink="/security"></ion-icon>
+    </ion-buttons>
+    <ion-title>2-step verification</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div *ngIf="!active">
+    <br><br><br><br>
+    <div class="ion-text-center">
+      <h3>Security beyond your password</h3>
+      To keep account secure , We'll ask you for your password and a verification code at sign-in
+        <img src="assets/icon/security.jpg" />
+      <ion-button size="large" (click) = "toggleClass(activeed)"> Sep up now</ion-button>
+    </div>
+  </div>
+  <div *ngIf="active">
+    <form (ngSubmit)="logForm()">
+      <div class="form-group">
+        <label for="email">Enter your password:</label>
+        <input type="password" class="form-control" name="password">
+      </div>
+      <ion-button size="large" type="submit" expand="block">Click</ion-button>
+      <a href="register" secondary clear item-right>
+        I forgot my password
+      </a>
+    </form>
+  </div>
+</ion-content>
