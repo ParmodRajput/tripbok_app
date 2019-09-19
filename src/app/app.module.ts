@@ -13,6 +13,8 @@ import {MatTabsModule} from '@angular/material';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/contacts/ngx';
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal/ngx';
+import { ProfileModalPageModule } from './profile-modal/profile-modal.module';
+
 // import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
@@ -27,6 +29,7 @@ import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal
     AppRoutingModule,
     HttpClientModule,
     MatTabsModule,
+    ProfileModalPageModule,
   ],
   providers: [
     StatusBar,

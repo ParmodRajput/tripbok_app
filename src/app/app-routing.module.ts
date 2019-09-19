@@ -27,7 +27,8 @@ const routes: Routes = [
   { path: 'twostepvarivication', loadChildren: './twostepvarivication/twostepvarivication.module#TwostepvarivicationPageModule' },
   { path: 'location', loadChildren: './location/location.module#LocationPageModule' },
   { path: 'notification', loadChildren: './notification/notification.module#NotificationPageModule' },
-  { path: 'chek-risk', loadChildren: './chek-risk/chek-risk.module#ChekRiskPageModule' }
+  { path: 'chek-risk', loadChildren: './chek-risk/chek-risk.module#ChekRiskPageModule' },
+  { path: 'profile-modal', loadChildren: './profile-modal/profile-modal.module#ProfileModalPageModule' }
 
 
 

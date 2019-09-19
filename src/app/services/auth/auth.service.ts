@@ -92,7 +92,7 @@ export class AuthService {
     const requestOptions = { headers: headers }; 
      return this.http.post(serverApiUrl+'/logout',data,requestOptions)
   }
-//profile
+// get profile
   profile(data) {
     // console.log(data.token);
     let headers = new HttpHeaders({
@@ -102,6 +102,22 @@ export class AuthService {
     });
     const requestOptions = { headers: headers }; 
      return this.http.get(serverApiUrl+'/profile',requestOptions)
+  }
+
+  // update profile
+  UpdateProfile(data) {
+    let headers = new HttpHeaders({
+      'Accept':'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': data.token
+      });
+    const requestOptions = { headers: headers }; 
+    let url = '/update/profile';
+    if(data.form.password){
+      url ='/update/password';
+    }
+    console.log(data.form);
+   return this.http.post(serverApiUrl+url,data.form,requestOptions)
   }
 
 }

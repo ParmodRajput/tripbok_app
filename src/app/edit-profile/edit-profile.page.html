@@ -3,10 +3,39 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="home"></ion-back-button>
     </ion-buttons>
-    <ion-title>Edit Profile</ion-title>
+    <ion-title>Edit Account</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
-</ion-content>
+    <ion-item routerLink="/edit-profile">
+      <ion-avatar slot="start">
+        <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+      </ion-avatar>
+      <ion-label>Item Avatar</ion-label>
+    </ion-item>
+    <ion-item (click)="openModal('Name','name',data.name,'text')">
+      <ion-label>
+        <p>Name</p>
+        <h5>{{data?.name}}</h5>
+      </ion-label>  
+    </ion-item>
+    <ion-item (click)="openModal('Phone Number','phone',data.phone,'number')">
+      <ion-label>
+        <p>Phone Number</p>
+        <h5>{{data?.phone}}</h5>
+      </ion-label>  
+    </ion-item>
+    <ion-item (click)="openModal('Email','email',data.email,'email')">
+      <ion-label>
+        <p>Email</p>
+        <h5>{{data?.email}}</h5>
+      </ion-label>  
+    </ion-item>
+    <ion-item (click)="openModal('Password','password','','password')">
+      <ion-label>
+        <p>Password</p>
+        <h5>*****</h5>
+      </ion-label>  
+    </ion-item>
+  </ion-content>

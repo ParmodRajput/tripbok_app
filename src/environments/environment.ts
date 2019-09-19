@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   serverApiUrl:'http://112.196.51.236/tripbok/api',
-  serverUrl:'http://112.196.51.236/tripbok/',
+  serverUrl:'http://112.196.51.236/tripbok',
 };
 
 /*

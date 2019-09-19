@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar text-center>
+    <ion-buttons slot="start">
+      <ion-button (click)="closeModal()"><ion-icon name="arrow-back"></ion-icon>Back</ion-button>
+    </ion-buttons>
+    <ion-title>{{formparma.label}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- <ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col text-center>
+        {{lebal}} : {{value}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col text-center>
+        <ion-button (click)="closeModal()">Close Modal</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content> -->
+
+<ion-content padding>
+  <form (ngSubmit)="save(saveForm)" #saveForm="ngForm">
+    <ion-row>
+      <ion-col>
+        <div padding>
+          <ion-item *ngIf="formparma.type =='password'">
+            <ion-input type="{{formparma.type}}" placeholder="Password confirmation" name="oldpassword" [(ngModel)]="password" required></ion-input>
+          </ion-item>
+          <span *ngIf="errors" style="color:red;" [innerHTML] ="errors">	
+          </span>
+          <ion-item>
+            <ion-input type="{{formparma.type}}" placeholder="{{formparma.label}}" name="{{formparma.name}}" [(ngModel)]="formparma.value" required></ion-input>
+          </ion-item>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="signup-col">
+        <ion-button full type="submit" [disabled]="!saveForm.form.valid" expand="block">Save</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+  </ion-content>
