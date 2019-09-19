@@ -51,10 +51,10 @@ export class EditProfilePage implements OnInit {
  
     modal.onDidDismiss().then((dataReturned) => {
       if (dataReturned !== null) {
-       // this.dataReturned = dataReturned.data;
-       //console.log(dataReturned.data);
-       this.data = dataReturned.data.data;
-       this.presentToast(dataReturned.data.message);
+        if(dataReturned.data){
+          this.data = dataReturned.data.data;
+          this.presentToast(dataReturned.data.message);
+        }
       }
     });
  
