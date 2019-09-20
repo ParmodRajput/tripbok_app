@@ -14,8 +14,11 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/contacts/ngx';
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal/ngx';
 import { ProfileModalPageModule } from './profile-modal/profile-modal.module';
-
-// import { IonicStorageModule } from '@ionic/storage';
+import { Camera } from '@ionic-native/Camera/ngx';
+import { File } from '@ionic-native/File/ngx';
+import { WebView } from '@ionic-native/ionic-webview/ngx';
+import { FilePath } from '@ionic-native/file-path/ngx';
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,6 +30,7 @@ import { ProfileModalPageModule } from './profile-modal/profile-modal.module';
     ReactiveFormsModule,
     IonicModule.forRoot(),
     AppRoutingModule,
+    IonicStorageModule.forRoot(),
     HttpClientModule,
     MatTabsModule,
     ProfileModalPageModule,
@@ -37,7 +41,11 @@ import { ProfileModalPageModule } from './profile-modal/profile-modal.module';
     SplashScreen,
     PayPal,
     Contacts,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    Camera,
+    File,
+    WebView,
+    FilePath
   ],
   bootstrap: [AppComponent]
 })
