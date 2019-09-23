@@ -7,7 +7,9 @@ import { HttpClient, HttpHeaders, HttpRequest, HttpEventType, HttpResponse, Http
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { Storage } from '@ionic/storage';
 import { FilePath } from '@ionic-native/file-path/ngx';
- 
+import { environment } from '../../environments/environment';
+const serverApiUrl = environment.serverApiUrl;
+
 import { finalize } from 'rxjs/operators';
 const STORAGE_KEY = 'my_images';
 @Component({
@@ -197,11 +199,11 @@ async uploadImageData(formData: FormData) {
   console.log(formData);
   let headers = new HttpHeaders({
     'Accept':'application/json',
-    'Content-Type': 'application/json',
+    //'Content-Type': 'application/json',
     'Authorization':localStorage.getItem('token')
     });
   const requestOptions = { headers: headers }; 
-  this.http.post("http://localhost/tripbok/api/upload", formData,requestOptions)
+  this.http.post(serverApiUrl+"/user/upload", formData,requestOptions)
       .pipe(
           finalize(() => {
               loading.dismiss();
