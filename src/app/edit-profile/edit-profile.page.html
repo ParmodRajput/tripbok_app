@@ -8,9 +8,9 @@
 </ion-header>
 
 <ion-content>
-    <ion-item routerLink="/edit-profile">
+    <ion-item (click)="selectImage()">
       <ion-avatar slot="start">
-        <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+        <img src="{{userimg}}">
       </ion-avatar>
       <ion-label>Item Avatar</ion-label>
     </ion-item>

@@ -24,6 +24,7 @@ export class EditProfilePage implements OnInit {
   dataReturned:any;
   data:any;
   images = [];
+  userimg:any;
   constructor(public modalController: ModalController,public toastController: ToastController,private AuthService: AuthService, private router: Router,private camera: Camera, private file: File, private http: HttpClient, private webview: WebView,
     private actionSheetController: ActionSheetController,private storage: Storage, private plt: Platform, private loadingController: LoadingController,
     private ref: ChangeDetectorRef, private filePath: FilePath) { 
@@ -34,7 +35,8 @@ export class EditProfilePage implements OnInit {
     this.AuthService.profile(userdata)
     .subscribe(res => {
       console.log(res);
-      this.data = res['data']
+      this.data = res['data'];
+      this.userimg = this.data.avatar;
       }, error => {
         localStorage.clear();
         this.router.navigate(['login']);
@@ -147,11 +149,13 @@ export class EditProfilePage implements OnInit {
                         let correctPath = filePath.substr(0, filePath.lastIndexOf('/') + 1);
                         let currentName = imagePath.substring(imagePath.lastIndexOf('/') + 1, imagePath.lastIndexOf('?'));
                         this.copyFileToLocalDir(correctPath, currentName, this.createFileName());
+                        this.startUpload(this.images[0]);
                     });
             } else {
                 var currentName = imagePath.substr(imagePath.lastIndexOf('/') + 1);
                 var correctPath = imagePath.substr(0, imagePath.lastIndexOf('/') + 1);
                 this.copyFileToLocalDir(correctPath, currentName, this.createFileName());
+                this.startUpload(this.images[0]);
             }
         });
   }
@@ -254,10 +258,12 @@ export class EditProfilePage implements OnInit {
               loading.dismiss();
           }))
       .subscribe(res => {
+        console.log(res);
             if (res['success']) {
-                this.presentToast2('File upload complete.')
+              this.userimg =res['userImg'];
+              this.presentToast2('File upload complete.');
             } else {
-                this.presentToast2('File upload failed.')
+              this.presentToast2('File upload failed.');
             }
       });
   }
